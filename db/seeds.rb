@@ -16,8 +16,8 @@ require 'random_data'
      body: RandomData.random_paragraph
    )
  end
-Post.find_or_create_by(title: "What is love?", body: "Baby don't hurt me!")
-Comment.find_or_create_by(body:"Don't hurt me, no more")
+roxbury = Post.find_or_create_by(title: "What is love?", body: "Baby don't hurt me!")
+Comment.find_or_create_by(body:"Don't hurt me, no more", post: roxbury)
  puts "Seed finished"
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"
