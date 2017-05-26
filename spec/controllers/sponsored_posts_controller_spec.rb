@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe SponsoredpostsController, type: :controller do
+RSpec.describe SponsoredPostsController, type: :controller do
   let(:my_topic) { Topic.create!(name:  RandomData.random_sentence, description: RandomData.random_paragraph) }
-  let(:my_sponsored) { my_topic.sponsoredposts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, price: 10) }
+  let(:my_sponsored) { my_topic.sponsored_posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, price: 10) }
 
   describe "GET #show" do
     it "returns http success" do
@@ -13,9 +13,9 @@ RSpec.describe SponsoredpostsController, type: :controller do
       get :show, topic_id: my_topic.id, id: my_sponsored.id
       expect(response).to render_template :show
     end
-    it "assigns my_post to @post" do
+    it "assigns my_sponsored to @sponsored_post" do
       get :show, topic_id: my_topic.id, id: my_sponsored.id
-      expect(assigns(:sponsoredPost)).to eq(my_sponsored)
+      expect(assigns(:sponsored_post)).to eq(my_sponsored)
     end
   end
 
@@ -30,9 +30,9 @@ RSpec.describe SponsoredpostsController, type: :controller do
         expect(response).to render_template :new
       end
 
-      it "instantiates @sponsoredPost" do
+      it "instantiates @sponsored_post" do
         get :new, topic_id: my_sponsored.id
-        expect(assigns(:sponsoredPost)).not_to be_nil
+        expect(assigns(:sponsored_post)).not_to be_nil
       end
     end
 
@@ -45,9 +45,9 @@ RSpec.describe SponsoredpostsController, type: :controller do
         get :edit, topic_id: my_topic.id, id: my_sponsored.id
         expect(response).to render_template :edit
       end
-      it "assigns sponsoredPost to be updated to @sponsoredPost" do
+      it "assigns sponsored_post to be updated to @sponsoredPost" do
         get :edit, topic_id: my_topic.id, id: my_sponsored.id
-        sponsored_instance = assigns(:sponsoredPost)
+        sponsored_instance = assigns(:sponsored_post)
 
         expect(sponsored_instance.id).to eq my_sponsored.id
         expect(sponsored_instance.title).to eq my_sponsored.title
