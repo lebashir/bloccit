@@ -56,6 +56,13 @@ require 'random_data'
    role:      'member'
  )
 
+ moderator = User.create!(
+  name: 'bashir',
+  email: 'bash@bloccit.com',
+  password: 'helloworld',
+  role: 'moderator'
+ )
+
 
  puts "Seed finished"
  puts "#{User.count} users created"
