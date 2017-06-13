@@ -19,9 +19,12 @@
     </div>
   </div>
 </div>
-
+<% if user_has_comments_posts?(@user) %>
 <h2>Posts</h2>
 <%= render @user.posts %>
 
 <h2>Comments</h2>
 <%= render @user.comments %>
+<% else %>
+<h2> <%= @user %> has nothing to show </h2>
+<% end %>
