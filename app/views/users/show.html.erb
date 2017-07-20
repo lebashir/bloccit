@@ -20,11 +20,20 @@
   </div>
 </div>
 <% if user_has_comments_posts?(@user) %>
-<h2>Posts</h2>
-<%= render @user.posts %>
+  <h2>Posts</h2>
+    <%= render @user.posts %>
 
-<h2>Comments</h2>
-<%= render @user.comments %>
+  <h2>Comments</h2>
+  <%= render @user.comments %>
 <% else %>
-<h2> <%= @user %> has nothing to show </h2>
+  <h2> <%= @user %> has nothing to show </h2>
 <% end %>
+
+<div class="media">
+   <div class="media-body">
+     <h2 class="media-heading">Favorited Posts</h2>
+     <%= favorited_posts(@user) %>
+   </div>
+   <div class="media-right">
+   </div>
+ </div>
