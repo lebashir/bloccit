@@ -22,6 +22,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @user = @user.posts.visible_to(current_user)
+    # @user = @user.posts.visible_to(current_user)
   end
 end

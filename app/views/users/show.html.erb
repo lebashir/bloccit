@@ -19,21 +19,19 @@
     </div>
   </div>
 </div>
-<% if user_has_comments_posts?(@user) %>
+<% if user_has_posts?(@user) %>
   <h2>Posts</h2>
     <%= render @user.posts %>
+<% else %>
+  <h2> This user has no posts.</h2>
+<% end %>
 
+<% if user_has_comments?(@user) %>
   <h2>Comments</h2>
   <%= render @user.comments %>
 <% else %>
-  <h2> <%= @user %> has nothing to show </h2>
+  <h2> This user has no comments. </h2>
 <% end %>
 
-<div class="media">
-   <div class="media-body">
-     <h2 class="media-heading">Favorited Posts</h2>
-     <%= favorited_posts(@user) %>
-   </div>
-   <div class="media-right">
-   </div>
- </div>
+<h2> Favorited Posts </h2>
+<%= render @user.favorites.map(&:post) %>
